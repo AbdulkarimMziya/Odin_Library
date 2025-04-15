@@ -29,3 +29,6 @@ addBookToLibrary(book2);
 addBookToLibrary(book3);
 addBookToLibrary(book4);
 addBookToLibrary(book5);
+
+// Loop through each book in the library
+// myLibrary.forEach(book => console.table(book));
