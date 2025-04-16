@@ -86,6 +86,14 @@ form fieldset .radio-label {
     padding: 0 20px 0 10px;
 }
 
+.form-row input:valid {
+    border: 2px solid green;
+}
+
+.form-row input:invalid {
+    border: 2px solid red;
+}
+
 .form-row button, 
 .btnDisplayForm {
     font-size: 1rem;

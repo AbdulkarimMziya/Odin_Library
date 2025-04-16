@@ -16,24 +16,7 @@ function addBookToLibrary(book) {
     myLibrary.push(book);
 }
 
-// Create and add 5 books
-const book1 = new Book(crypto.randomUUID(), "1984", "George Orwell", 328, true);
-const book2 = new Book(crypto.randomUUID(), "To Kill a Mockingbird", "Harper Lee", 281, false);
-const book3 = new Book(crypto.randomUUID(), "The Great Gatsby", "F. Scott Fitzgerald", 180, true);
-const book4 = new Book(crypto.randomUUID(), "Moby Dick", "Herman Melville", 635, false);
-const book5 = new Book(crypto.randomUUID(), "Pride and Prejudice", "Jane Austen", 279, true);
-
-// Add books to the library
-addBookToLibrary(book1);
-addBookToLibrary(book2);
-addBookToLibrary(book3);
-addBookToLibrary(book4);
-addBookToLibrary(book5);
-
-const container = document.querySelector('.grid-container');
-
-// Loop through each book in the library
-myLibrary.forEach(book => {
+function render(book) {
     // Create .item div
     const item = document.createElement('div');
     item.classList.add('item');
@@ -88,7 +71,28 @@ myLibrary.forEach(book => {
 
     // Append item to container
     container.appendChild(item); 
-});
+}
+
+// Loop through each book in the library
+function renderAll() {
+    myLibrary.forEach(render);
+}
+
+// Initial books
+const book1 = new Book(crypto.randomUUID(), "1984", "George Orwell", 328, true);
+const book2 = new Book(crypto.randomUUID(), "To Kill a Mockingbird", "Harper Lee", 281, false);
+const book3 = new Book(crypto.randomUUID(), "The Great Gatsby", "F. Scott Fitzgerald", 180, true);
+const book4 = new Book(crypto.randomUUID(), "Moby Dick", "Herman Melville", 635, false);
+const book5 = new Book(crypto.randomUUID(), "Pride and Prejudice", "Jane Austen", 279, true);
+
+addBookToLibrary(book1);
+addBookToLibrary(book2);
+addBookToLibrary(book3);
+addBookToLibrary(book4);
+addBookToLibrary(book5);
+
+const container = document.querySelector('.grid-container');
+renderAll();
 
 
 const openBtn = document.querySelector('.btnDisplayForm');
@@ -98,7 +102,7 @@ const form = dialog.querySelector('form');
 
 // Show dialog on button click
 openBtn.addEventListener('click', () => {
-    dialog.showModal();
+    dialog.show();
 });
 
 // Close dialog after submitting the form
@@ -109,3 +113,19 @@ form.addEventListener('submit', (e) => {
 
 // Hide dialog
 closeBtn.addEventListener('click', () => dialog.close());
+
+form.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const title = document.querySelector('#title').value.trim();
+    const author = document.querySelector('#author').value.trim();
+    const pages = parseInt(document.querySelector('#pages').value);
+    const hasRead = document.querySelector('input[name="hasRead"]:checked').value === "true";
+
+    const newBook = new Book(crypto.randomUUID(), title, author, pages, hasRead);
+    addBookToLibrary(newBook);
+    render(newBook);
+    
+    dialog.close();
+    form.reset();
+});
