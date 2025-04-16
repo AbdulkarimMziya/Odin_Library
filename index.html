@@ -15,6 +15,40 @@
         <button class="btn btnDisplayForm">Add a Book</button>
     </header>
 
+    <form action="" method="post">
+        <p class="form-row">
+            <label for="title">Title</label>
+            <input id="title"
+                   name="title"
+                   type="text" />
+        </p>
+        <p class="form-row">
+            <label for="author">Author</label>
+            <input id="author"
+                   name="author"
+                   type="text" />
+        </p>
+        <p class="form-row">
+            <label for="pages">Pages</label>
+            <input id="pages"
+                   name="pages"
+                   type="number" />
+        </p>
+        <fieldset>
+            <legend>I have read this book:</legend>
+            <input id="hasRead-true"
+                   name="hasRead"
+                   type="radio"
+                   value="true" />
+            <label for="hasRead-true" class="radio-label">Yes</label>
+            <input id="hasRead-false"
+                   name="hasRead"
+                   type="radio"
+                   value="false"
+                   checked />
+            <label for="hasRead-false" class="radio-label">No</label>
+        </fieldset>
+    </form>
     
 </body>
 </html>
