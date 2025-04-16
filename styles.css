@@ -104,7 +104,7 @@ form fieldset .radio-label {
 
 .form-row button:hover {
     background-color: #76AEED;
-  }
+}
   
 .form-row button:active {
     background-color: #407FC7;
@@ -120,10 +120,10 @@ form fieldset .radio-label {
 }
 
 .grid-container .item {
-    display: flex;
-    justify-content: flex-start; 
+    display: grid;
+    grid-template-columns: 0.5fr 2fr 0.5fr;
     align-items: center;
-    gap: 2rem;   
+    gap: 1rem;   
 
     background-color: var(--section-background-color);
     border: 2px solid black;
@@ -138,6 +138,30 @@ img {
 
 .item p {
     line-height: 2rem;
+}
+
+.item .title, .author {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.item .delete-btn {
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+
+    align-self: start;
+    justify-self: end;
+}
+
+.delete-btn:hover {
+    background-color: rgba(247, 56, 56, 0.93);
+    border-radius: 5px;
+}
+
+.delete-btn:active {
+    background-color: rgb(238, 56, 56);
+    border-radius: 5px;
 }
 
 
