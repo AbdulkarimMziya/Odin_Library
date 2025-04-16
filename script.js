@@ -90,3 +90,22 @@ myLibrary.forEach(book => {
     container.appendChild(item); 
 });
 
+
+const openBtn = document.querySelector('.btnDisplayForm');
+const closeBtn = document.querySelector('.close-dialog-btn');
+const dialog = document.querySelector('.dialog');
+const form = dialog.querySelector('form');
+
+// Show dialog on button click
+openBtn.addEventListener('click', () => {
+    dialog.showModal();
+});
+
+// Close dialog after submitting the form
+form.addEventListener('submit', (e) => {
+    e.preventDefault(); // Prevent actual form submission
+    dialog.close();
+});
+
+// Hide dialog
+closeBtn.addEventListener('click', () => dialog.close());
