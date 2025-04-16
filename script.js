@@ -12,6 +12,11 @@ function Book(id,title, author, pages, hasRead) {
     this.hasRead = hasRead;
 }
 
+// A prototype method to toggle hasRead
+Book.prototype.toggleReadStatus = function () {
+    this.hasRead = !this.hasRead;
+};
+
 function addBookToLibrary(book) {
     myLibrary.push(book);
 }
@@ -49,6 +54,22 @@ function render(book) {
     p.appendChild(authorSpan);
     p.innerHTML += `<br>Pages: `;
     p.appendChild(pagesSpan);
+
+    // Add read checkbox
+    const readLabel = document.createElement('label');
+    readLabel.textContent = 'Read: ';
+    const readCheckbox = document.createElement('input');
+    readCheckbox.type = 'checkbox';
+    readCheckbox.checked = book.hasRead;
+ 
+    readCheckbox.addEventListener('change', () => {
+        book.toggleReadStatus();
+        console.log(`"${book.title}" read status: ${book.hasRead}`);
+    });
+ 
+    p.appendChild(document.createElement('br'));
+    p.appendChild(readLabel);
+    p.appendChild(readCheckbox);
 
     // Create delete button (cross icon)
     const deleteBtn = document.createElement('img');
@@ -125,7 +146,7 @@ form.addEventListener('submit', (e) => {
     const newBook = new Book(crypto.randomUUID(), title, author, pages, hasRead);
     addBookToLibrary(newBook);
     render(newBook);
-    
+
     dialog.close();
     form.reset();
 });
