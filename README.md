@@ -4,7 +4,7 @@ A simple JavaScript web app that lets you add, display, update, and delete books
 
 ## 🌐 Live Demo
 
-[Click here to view the app live](#)
+[Click here to view the app live](https://abdulkarimmziya.github.io/Odin_Library/)
 
 ## 🚀 Features
 
