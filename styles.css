@@ -3,3 +3,40 @@
     padding: 0;
     box-sizing: border-box;
 }
+:root {
+    --body-background-color: #EAEDF0;
+    --section-background-color: #F6F7F8;
+    --font-family: "Helvetica", "Arial", sans-serif;
+    --font-size_16: 16px;
+    --border-style: 1px solid D6D9DC;
+}
+
+body {
+    color: #5D6063;
+    background-color: var(--body-background-color);
+    font-family: var(--font-family);
+    font-size: var(--font-size_16);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+header {
+    text-align: center;
+    background-color: var(--section-background-color);
+    border: var(--border-style);
+    border-radius: 3px;
+
+    width: 80%;
+    margin: 40px 0;
+    padding: 50px;
+}
+
+header > * {
+    margin-bottom: 20px;
+}
+
+header h1 {
+    font-size: 2em;
+}
