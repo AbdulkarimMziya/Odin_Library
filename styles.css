@@ -8,7 +8,7 @@
     --section-background-color: #F6F7F8;
     --font-family: "Helvetica", "Arial", sans-serif;
     --font-size_16: 16px;
-    --border-style: 1px solid D6D9DC;
+    --border-style: 1px solid #D6D9DC;
 }
 
 body {
@@ -130,7 +130,7 @@ form fieldset .radio-label {
     overflow-y: auto;
 }
 
-.grid-container .item {
+.grid-container > .item {
     display: grid;
     grid-template-columns: 0.5fr 2fr 0.5fr;
     align-items: center;
