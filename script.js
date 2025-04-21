@@ -1,21 +1,39 @@
 const myLibrary = [];
 
-function Book(id,title, author, pages, hasRead) {
-    if(!new.target){
-        throw Error("You must use the 'new' operator to call the constructor");
+class Book {
+    constructor(title, author, pages, hasRead) {
+        this._id = crypto.randomUUID(); // private assignment
+        this._title = title;
+        this._author = author;
+        this._pages = pages;
+        this._hasRead = hasRead;
     }
 
-    this.id = id;
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.hasRead = hasRead;
-}
 
-// A prototype method to toggle hasRead
-Book.prototype.toggleReadStatus = function () {
-    this.hasRead = !this.hasRead;
-};
+    get id() {
+        return this._id;
+    }
+
+    get title() {
+        return this._title;
+    }
+
+    get author() {
+        return this._author;
+    }
+
+    get pages() {
+        return this._pages;
+    }
+
+    toggleReadStatus() {
+        this._hasRead = !this._hasRead;
+    }
+
+    get hasRead() {
+        return this._hasRead;
+    }
+}
 
 function addBookToLibrary(book) {
     myLibrary.push(book);
@@ -100,11 +118,11 @@ function renderAll() {
 }
 
 // Initial books
-const book1 = new Book(crypto.randomUUID(), "1984", "George Orwell", 328, true);
-const book2 = new Book(crypto.randomUUID(), "To Kill a Mockingbird", "Harper Lee", 281, false);
-const book3 = new Book(crypto.randomUUID(), "The Great Gatsby", "F. Scott Fitzgerald", 180, true);
-const book4 = new Book(crypto.randomUUID(), "Moby Dick", "Herman Melville", 635, false);
-const book5 = new Book(crypto.randomUUID(), "Pride and Prejudice", "Jane Austen", 279, true);
+const book1 = new Book("1984", "George Orwell", 328, true);
+const book2 = new Book("To Kill a Mockingbird", "Harper Lee", 281, false);
+const book3 = new Book("The Great Gatsby", "F. Scott Fitzgerald", 180, true);
+const book4 = new Book("Moby Dick", "Herman Melville", 635, false);
+const book5 = new Book("Pride and Prejudice", "Jane Austen", 279, true);
 
 addBookToLibrary(book1);
 addBookToLibrary(book2);
@@ -143,7 +161,7 @@ form.addEventListener('submit', (e) => {
     const pages = parseInt(document.querySelector('#pages').value);
     const hasRead = document.querySelector('input[name="hasRead"]:checked').value === "true";
 
-    const newBook = new Book(crypto.randomUUID(), title, author, pages, hasRead);
+    const newBook = new Book(title, author, pages, hasRead);
     addBookToLibrary(newBook);
     render(newBook);
 
